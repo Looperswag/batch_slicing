@@ -13,12 +13,12 @@ import cv2
 import base64
 import re # 导入 re 模块
 
-key_path = "./idc-ipc-1dc332fa2fe3.json"
+key_path = "./your_key_path.json"
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = key_path
 
     
 # Gemini API 配置
-def setup_gemini_client(project_id="idc-ipc", location="global"):
+def setup_gemini_client(project_id="your_project_id", location="your_location"):
     """
     设置并返回 Gemini API 客户端
     """
@@ -47,7 +47,7 @@ def label_video_with_gemini(client, video_path):
         )
         
         # 定义提示词
-        prompt = " 这是一个介绍anker产品的视频，请根据画面内容，输出一个标签，用一句完整的话来描述，格式如下：'画面中是否有人物出现（头部出现即认为有，仅有手部出现不算，如果有人物，输出人物的性别，'女性'或'男性'标签，如果无人物，输出'无人物'标签） - 有无产品出现在画面（判断是否有anker的产品出现在画面，输出'有产品'或'无产品'标签） - 描述画面中展示的产品功能特点 - 对视频画面所在场景进行描述'，若无法识别的内容可以跳过。最终输出格式必须按照：女性-有产品-xxxx功能-xxx场景，不需要任何其他的内容或前缀描述 "
+        prompt = " Your_labeling_prompt "
         
         text_part = types.Part.from_text(text=prompt)
         
