@@ -144,7 +144,7 @@
     .
     ├── run_video_scene.py
     ├── run_video_text.py
-    ├── your-service-account-key.json (或 idc-ipc-1dc332fa2fe3.json)
+    ├── your-service-account-key.json
     └── user/
         └── testuser/
             ├── original_scene/ <-- run_video_scene.py 的输入视频
@@ -192,16 +192,16 @@
     ```bash
     python run_video_text.py \
         --project-id "your-gcp-project-id" \
-        --location "us-central1" \
-        --whisper-model "medium" \
-        --gemini-model "gemini-1.5-flash-latest"
+        --location "your-location" \
+        --whisper-model "base" \
+        --gemini-model "your-latest-gemini-model-name"
     ```
     (脚本内部会处理用户文件夹路径的拼接)
 
     **常用命令行参数**:
     *   `--input_path`: (通常由脚本根据用户名自动设置) 输入视频文件夹路径。
     *   `--output_dir`: (通常由脚本根据用户名自动设置) 输出目录。
-    *   `--project-id`: Google Cloud 项目ID (默认: `idc-ipc`)。
+    *   `--project-id`: Google Cloud 项目ID
     *   `--location`: Google Cloud 区域 (默认: `global`)。
     *   `--whisper-model`: Whisper 模型大小 (可选: `tiny`, `base`, `small`, `medium`, `large`; 默认: `base`)。
     *   `--gemini-model`: Gemini 模型名称 (默认: `gemini-2.5-flash-preview-05-20`)。
