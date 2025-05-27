@@ -82,7 +82,7 @@ def setup_logging(output_dir):
 
     return log_file_path
 
-key_path = "./idc-ipc-1dc332fa2fe3.json"
+key_path = "./your_key.json"
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = key_path
 
 # 添加时间格式化函数
@@ -199,7 +199,7 @@ def batch_gemini_requests(client, requests, model_name, batch_size=4, max_retrie
     
 
 class VideoSplitter:
-    def __init__(self, project_id="idc-ipc", location="global", model_name="gemini-2.5-flash-preview-05-20", 
+    def __init__(self, project_id="your_project_id", location="your_location", model_name="gemini-2.5-flash-preview-05-20", 
                  whisper_model="base", output_dir="./output"):
         """
         初始化视频分割器
@@ -482,8 +482,8 @@ class VideoSplitter:
             prompt = f"""
             分析以下视频片段的内容：
             
-            这是从Anker品牌一款产品的广告视频中截取的一帧图像，和对应时间的口播文本: "{text}"
-            请根据以上信息，输出一个标签，用一句完整的话来描述，格式如下：'画面中是否有人物出现（头部出现即认为有，仅有手部出现不算，如果有人物，输出人物的性别，'女性'或'男性'标签，如果无人物，输出"无人物"标签）- 详细描述画面和文本展示的产品功能特点 - 对视频画面所在场景的描述'，若无法识别的内容可以跳过。最终输出格式必须按照：女性-xxxx功能-xxx场景，只需回复标签内容，不需要任何其他的内容或前缀描述。
+            这是从****截取的N帧图像，和对应时间的文本: "{text}"
+            请根据以上信息，输出一个标签，，格式如下：'******'。
             
             """
             
@@ -626,8 +626,8 @@ class VideoSplitter:
             prompt = f"""
             分析以下视频片段的内容：
             
-            这是从Anker品牌一款产品的广告视频中截取的一帧图像，和对应时间的口播文本: "{chunk["text"]}"
-            请根据以上信息，输出一个标签，用一句完整的话来描述，格式如下：'画面中是否有人物出现（头部出现即认为有，仅有手部出现不算，如果有人物，输出人物的性别，'女性'或'男性'标签，如果无人物，输出"无人物"标签）- 详细描述画面和文本展示的产品功能特点 - 对视频画面所在场景的描述'，若无法识别的内容可以跳过。最终输出格式必须按照：女性-xxxx功能-xxx场景，只需回复标签内容，不需要任何其他的内容或前缀描述。
+            这是从***视频中截取的N帧图像，和对应的文本: "{chunk["text"]}"
+            请根据以上信息，输出一个标签，格式如下：'********'。
             """
             
             # 准备请求内容
@@ -1211,8 +1211,8 @@ def main():
     parser = argparse.ArgumentParser(description='基于语义内容的视频切分工具')
     parser.add_argument('--input_path', type=str, default='./original_text', help='输入视频文件夹路径')
     parser.add_argument('--output_dir', type=str, default='./Result_folder_text', help='输出目录，用于保存切分后的视频片段')
-    parser.add_argument('--project-id', type=str, default='idc-ipc', help='Google Cloud 项目ID')
-    parser.add_argument('--location', type=str, default='global', help='Google Cloud 区域')
+    parser.add_argument('--project-id', type=str, help='Google Cloud 项目ID')
+    parser.add_argument('--location', type=str, help='Google Cloud 区域')
     parser.add_argument('--whisper-model', type=str, default='base', help='Whisper模型大小 (tiny, base, small, medium, large)')
     parser.add_argument('--gemini-model', type=str, default='gemini-2.5-flash-preview-05-20', help='Gemini模型名称')
     
