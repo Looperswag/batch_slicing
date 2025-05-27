@@ -75,7 +75,7 @@
 
 3.  **Google Cloud 项目和 Vertex AI API**:
     *   目前key挂在IDC aigc下，如果后续迁移至DAM或者DOM最好换掉。
-    *   创建一个服务账号 (Service Account) 并下载其 JSON 密钥文件。两个脚本中默认此文件名为 `idc-ipc-1dc332fa2fe3.json` 并放置在脚本同级目录。
+    *   创建一个服务账号 (Service Account) 并下载其 JSON 密钥文件。
 
 4.  **Python 依赖库**:
     在项目根目录下，根据您要使用的脚本安装对应的依赖：
